@@ -74,7 +74,7 @@ export default function DeleteModule({ pageNum, pageCount, onConfirm, onCancel }
       )}
 
       <div className="module-actions">
-        <button className="btn-cancel" onClick={onCancel}>Cancel</button>
+        <button className="btn sbtn-cancel" onClick={onCancel}>Cancel</button>
         <button className="btn-delete" disabled={isOnlyPage} onClick={() => !isOnlyPage && onConfirm({ pageNum })}>Delete Page</button>
       </div>
     </div>

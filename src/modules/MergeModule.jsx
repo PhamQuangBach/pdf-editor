@@ -81,38 +81,34 @@ export default function MergeModule({ onConfirm, onCancel }) {
       <p className="module-description">Select another PDF to merge with the current document.</p>
 
       <div style={{ width: "100%", marginTop: 16 }}>
-        <label style={{ display: "block", marginBottom: 10, fontSize: 14, fontWeight: 600, color: "#26215C" }}>
-          Select PDF to merge
-        </label>
         <input
+          id="merge-file-input"
           type="file"
           accept="application/pdf"
           onChange={handleFileSelect}
-          style={{
-            display: "block",
-            width: "100%",
-            padding: "10px 12px",
-            border: "1px dashed #C9BBE9",
-            borderRadius: 10,
-            fontSize: 14,
-            cursor: "pointer",
-            background: "#FAFAF9",
-          }}
+          style={{ display: "none" }}
         />
+
+        <label htmlFor="merge-file-input" className="drop-zone merge-drop">
+          <h3 className="drop-title" style={{ margin: 0 }}>Drop PDF here or click to select</h3>
+          <p className="drop-hint" style={{ marginTop: 8 }}>Supports one PDF up to 50MB</p>
+        </label>
       </div>
 
       {fileError && (
-        <div style={{ width: "100%", marginTop: 12, padding: "10px 12px", background: "#FFF8F0", border: "1px solid #FAC775", borderRadius: 8 }}>
-          <p style={{ margin: 0, fontSize: 13, color: "#854F0B" }}>⚠ {fileError}</p>
+        <div className="module-warning" style={{ width: "100%", marginTop: 12 }}>
+          <div className="module-warning-icon">⚠</div>
+          <p className="module-warning-text">{fileError}</p>
         </div>
       )}
 
       {mergePdfFile && !fileError && (
-        <div style={{ width: "100%", marginTop: 12, padding: "12px 16px", background: "#F4F3FF", border: "1px solid #E6E3FB", borderRadius: 8 }}>
-          <p style={{ margin: 0, fontSize: 13, color: "#534AB7", fontWeight: 600 }}>📄 {mergePdfFile.name}</p>
-          <p style={{ margin: "4px 0 0", fontSize: 12, color: "#8B7BB8" }}>
-            {(mergePdfFile.size / 1024).toFixed(1)} KB
-          </p>
+        <div className="module-preview" style={{ width: "100%", marginTop: 12 }}>
+          <div className="module-page-icon">📄</div>
+          <div>
+            <p className="module-preview-label">{mergePdfFile.name}</p>
+            <p className="module-preview-sub">{(mergePdfFile.size / 1024).toFixed(1)} KB</p>
+          </div>
         </div>
       )}
 
@@ -121,7 +117,7 @@ export default function MergeModule({ onConfirm, onCancel }) {
       </p>
 
       <div className="module-actions">
-        <button className="btn-cancel" onClick={onCancel}>
+        <button className="btn btn-cancel" onClick={onCancel}>
           Cancel
         </button>
         <button className="btn-confirm" disabled={!mergePdfFile || !!fileError} onClick={handleConfirm}>

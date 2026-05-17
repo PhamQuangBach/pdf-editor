@@ -76,7 +76,7 @@ export default function ReorderModule({ pageNum, pageCount, onConfirm, onCancel 
       </div>
 
       <div className="module-actions">
-        <button className="btn-cancel" onClick={onCancel}>Cancel</button>
+        <button className="btn btn-cancel" onClick={onCancel}>Cancel</button>
         <button className="btn-confirm" disabled={isSame} onClick={() => !isSame && onConfirm({ fromPage: pageNum, toPage: targetPage })}>Apply Order</button>
       </div>
     </div>
