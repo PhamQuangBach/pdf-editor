@@ -281,7 +281,9 @@ export default function App() {
         <div className="brand">
           <span className="brand-title">PDFStudio</span>
         </div>
-        {pdfDoc && (
+        {!pdfDoc ? (
+          <a className="btn" href="https://phamquangbach.github.io/" rel="noopener noreferrer">Main Site</a>
+        ) : (
           <button onClick={handleReset} className="btn-close-file">✕ Close file</button>
         )}
       </header>

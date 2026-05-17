@@ -30,6 +30,10 @@ html {
   height:60px;
 }
 
+.app-header a{
+  text-decoration: none;
+}
+
 .app-main{
   max-width:1200px;
   margin:0 auto;
